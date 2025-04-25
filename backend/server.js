@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const crypto = require('crypto');
 
 const app = express();
 app.use(cors());
@@ -13,6 +14,12 @@ const users = Array.from({ length: 100 }, (_, i) => ({
   name: `User ${i + 1}`,
   email: `user${i + 1}@example.com`,
 }));
+
+// Helper to generate a Gravatar URL for a given email
+function gravatarUrl(email) {
+  const hash = crypto.createHash('md5').update(email.trim().toLowerCase()).digest('hex');
+  return `https://www.gravatar.com/avatar/${hash}?d=identicon`;
+}
 
 app.get('/api/users', (req, res) => {
   const page = parseInt(req.query.page) || 1;
@@ -43,7 +50,10 @@ app.get('/api/scrape-users', async (req, res) => {
         .map(line => line.trim())
         .filter(Boolean);
       const [shortCode, email, name, address] = lines;
-      scraped.push({ shortCode, email, name, address });
+      // Try to extract an <img> src, otherwise fall back to Gravatar
+      const imgTag = $(li).find('img').attr('src');
+      const image = imgTag ? imgTag : gravatarUrl(email);
+      scraped.push({ image, shortCode, email, name, address });
     });
     res.json({ page, users: scraped });
   } catch (err) {
