@@ -15,7 +15,7 @@ const Home = () => {
   const activePageStyle = { backgroundColor: '#0070f3', color: '#fff', borderColor: '#0070f3' };
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api/scrape-users?page=${page}`)
+    axios.get(`https://nodejs-test-g3gk.onrender.com/api/scrape-users?page=${page}`)
       .then((res) => {
         setUsers(res.data.users);
       });
