@@ -1,11 +1,21 @@
-const express = require('express');
-const cors = require('cors');
-const axios = require('axios');
-const cheerio = require('cheerio');
-const crypto = require('crypto');
+import axios from 'axios';
+import * as cheerio from 'cheerio';
+import cors from 'cors';
+import crypto from 'crypto';
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Resolving dirname for ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(cors());
+
+// app.use(express.static(path.join(__dirname, '/frontend/.next')));
+
+// app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/frontend/.next/index.html')));
 
 const PORT = process.env.PORT || 4000;
 

@@ -6,16 +6,15 @@ const Home = () => {
   const [page, setPage] = useState(1);
 
   // Add style objects for container, table, and pagination
-  const containerStyle = { padding: '2rem', maxWidth: '800px', margin: '0 auto', fontFamily: 'Arial, sans-serif' };
+  const containerStyle = { padding: '2rem', maxWidth: '1100px', margin: '0 auto', fontFamily: 'Arial, sans-serif' };
   const paginationContainerStyle = { display: 'flex', justifyContent: 'center', gap: '0.5rem', marginTop: '1.5rem' };
   const paginationButtonStyle = { padding: '0.5rem 1rem', border: '1px solid #ddd', background: '#fff', cursor: 'pointer' };
-  const activePageStyle = { backgroundColor: '#0070f3', color: '#fff', borderColor: '#0070f3' };
   // Add style objects for grid layout and cards
   const gridContainerStyle = { display: 'flex', flexWrap: 'wrap', listStyle: 'none', padding: 0, margin: 0 };
-  const gridItemStyle = { width: 'calc(20% - 1px)', boxSizing: 'border-box', marginBottom: '1rem', padding: '0 0.5%' };
+  const gridItemStyle = { width: '220px', boxSizing: 'border-box', marginBottom: '1rem', padding: '0 0.5%' };
   const memberCardStyle = { border: '1px solid #eee', borderRadius: '4px', padding: '1rem', textAlign: 'center' };
   const memberImgStyle = { marginBottom: '0.5rem' };
-  const imgStyle = { width: '100%', height: 'auto', borderRadius: '50%', objectFit: 'cover' };
+  const imgStyle = { width: '100%', height: 'auto', objectFit: 'cover' };
   const memberNameStyle = { fontWeight: 'bold', margin: '0.5rem 0' };
   const memberEmailStyle = { margin: '0.5rem 0' };
   const extraFieldsContainerStyle = { margin: '0.5rem 0' };
